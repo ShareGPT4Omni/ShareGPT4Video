@@ -1,6 +1,7 @@
 # <img src="https://raw.githubusercontent.com/ShareGPT4V/ShareGPT4V-Resources/master/images/share4video_tight.png" style="vertical-align: -10px;" :height="50px" width="50px"> ShareGPT4Video: Improving Video Understanding and Generation with Better Captions
 
-⭐️ **Our series works:** [[**MMStar**](https://mmstar-benchmark.github.io/)]  [[**ShareGPT4V**](https://sharegpt4v.github.io/)]
+⭐️ **Our series works:** [[**MMStar**](https://mmstar-benchmark.github.io/)]  [[**ShareGPT4V**](https://sharegpt4v.github.io/)]  [[**ShareGPT4Omni**](https://sharegpt4omni.github.io/)]
+
 
 ---
 
@@ -11,7 +12,7 @@ Here is a video for introducing ShareGPT4Video clearly:
 [![video]](https://user-images.githubusercontent.com/56393454/334307144-1b106612-447b-4e35-bb9f-9b904fa3a464.mp4)
 
 - **Authors**: [Lin Chen*](https://lin-chen.site), [Xilin Wei*]() [Jinsong Li*](https://li-jinsong.github.io/), [Xiaoyi Dong](https://scholar.google.com/citations?user=FscToE0AAAAJ&hl=en), [Pan Zhang](https://panzhang0212.github.io/), [Yuhang Zang](https://yuhangzang.github.io/), [Zehui Chen](https://lovesnowbest.site/), [Haodong Duan](https://kennymckormick.github.io/), [Bin Lin](https://scholar.google.com.hk/citations?user=GCOVDKoAAAAJ&hl=en), [Zhenyu Tang](), [Li Yuan](https://yuanli2333.github.io/), [Yu Qiao](https://scholar.google.co.uk/citations?user=gFtI-8QAAAAJ&hl=en), [Dahua Lin](http://dahua.site/), [Feng Zhao📧](https://scholar.google.com/citations?hl=en&user=r6CvuOUAAAAJ), [Jiaqi Wang 📧](https://myownskyw7.github.io/)
-- **Institutes**: University of Science and Technology of China; Shanghai AI Laboratory; Peking University;
+- **Institutes**: University of Science and Technology of China; The Chinese University of Hong Kong; Peking University; Shanghai AI Laboratory
 - **Resources**: [[Paper]()] [[Project Page](https://sharegpt4video.github.io/)] [[ShareGPT4Video Dataset]()]
 - **Models**: [[🤗ShareGPT4Video-8B](https://huggingface.co/Lin-Chen/sharegpt4video-8b)] [[ShareCaptioner-Video]()]
 - **Demo**: [[🤗ShareGPT4Video-8B]()] [[🤗ShareCaptioner-Video]()]
