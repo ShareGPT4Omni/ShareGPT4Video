@@ -39,6 +39,12 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 ## Quick Usage
 
+You can directly use our ShareGPT4Video model for conversation with your own video by the following command:
+
+```bash
+python run.py --model-path Lin-Chen/sharegpt4video-8b --query Describe this video in detail.
+```
+
 ## Install
 
 ```bash
