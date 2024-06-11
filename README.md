@@ -15,7 +15,7 @@ Here is a video for introducing ShareGPT4Video clearly:
 - **Institutes**: University of Science and Technology of China; The Chinese University of Hong Kong; Peking University; Shanghai AI Laboratory
 - **Resources**: [[Paper](https://arxiv.org/abs/2406.04325v1)] [[Project Page](https://sharegpt4video.github.io/)] [[ShareGPT4Video Dataset](https://huggingface.co/datasets/ShareGPT4Video/ShareGPT4Video)]
 - **Models**: [[🤗ShareGPT4Video-8B](https://huggingface.co/Lin-Chen/sharegpt4video-8b)] [[🤗ShareCaptioner-Video](https://huggingface.co/Lin-Chen/ShareCaptioner-Video)]
-- **Demo**: [[🤗ShareGPT4Video-8B]()] [[🤗ShareCaptioner-Video]()]
+- **Demo**: [[🤗ShareGPT4Video-8B](https://huggingface.co/spaces/Lin-Chen/ShareGPT4Video-8B)] [[🤗ShareCaptioner-Video]()]
 
 ## 💡 Highlights
 
