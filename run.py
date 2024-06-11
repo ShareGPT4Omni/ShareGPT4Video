@@ -1,3 +1,4 @@
+import argparse
 import os
 
 import numpy as np
@@ -141,25 +142,29 @@ def single_test(model, processor, tokenizer, vid_path, qs, pre_query_prompt=None
 
 
 if __name__ == "__main__":
-    model_path = 'pretrained/sharegpt4video-8b'
-    vid_path = "images/yoga.mp4"
-    conv_mode = 'llava_llama_3'
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model-path", type=str,
+                        default="Lin-Chen/sharegpt4video-8b")
+    parser.add_argument("--video-path", type=str, default="images/yoga.mp4")
+    parser.add_argument("--conv-mode", type=str, default="llava_llama_3")
+    parser.add_argument("--query", type=str,
+                        default="Describe this video in detail.")
+    args = parser.parse_args()
     num_frames = 16
     pre_query_prompt = "The provided image arranges keyframes from a video in a grid view, keyframes are separated with white bands. Answer concisely with overall content and context of the video, highlighting any significant events, characters, or objects that appear throughout the frames."
 
     disable_torch_init()
-    model_path = os.path.expanduser(model_path)
+    model_path = os.path.expanduser(args.model_path)
     model_name = get_model_name_from_path(model_path)
     tokenizer, model, processor, context_len = load_pretrained_model(
         model_path, None, model_name, device_map='cpu')
     model = model.cuda().eval()
 
-    question = 'Describe this video in detail.'
     outputs = single_test(model,
                           processor,
                           tokenizer,
-                          vid_path,
-                          qs=question,
+                          args.video_path,
+                          qs=args.query,
                           pre_query_prompt=pre_query_prompt,
                           num_frames=num_frames,
-                          conv_mode=conv_mode)
+                          conv_mode=args.conv_mode)
