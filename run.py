@@ -145,7 +145,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--model-path", type=str,
                         default="Lin-Chen/sharegpt4video-8b")
-    parser.add_argument("--video", type=str, default="images/yoga.mp4")
+    parser.add_argument("--video", type=str, default="examples/yoga.mp4")
     parser.add_argument("--conv-mode", type=str, default="llava_llama_3")
     parser.add_argument("--query", type=str,
                         default="Describe this video in detail.")

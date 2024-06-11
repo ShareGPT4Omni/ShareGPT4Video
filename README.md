@@ -26,6 +26,8 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 ## 📜 News
 
+**[2024/6/11]** The web demo and local demo of ShareGPT4Video-8B are available now!
+
 **[2024/6/7]** Our paper has been featured as [HuggingFace Daily Papers](https://huggingface.co/papers?date=2024-06-07) and ranked 1st in 6.27.
 
 **[2024/5/27]** The [ShareGPT4Video-8B](https://huggingface.co/Lin-Chen/sharegpt4video-8b) model is released!
@@ -36,7 +38,7 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 - [ ] Training and evaluation code for ShareGPT4Video-8B
 - [ ] Local ShareCaptioner-Video
-- [ ] Web demo and local demo of ShareGPT4Video-8B
+- [x] Web demo and local demo of ShareGPT4Video-8B
 - [x] Checkpoints of ShareGPT4Video-8B
 
 ## Quick Usage
@@ -44,7 +46,13 @@ Here is a video for introducing ShareGPT4Video clearly:
 You can directly use our ShareGPT4Video model for conversation with your own video by the following command:
 
 ```
-python run.py --model-path Lin-Chen/sharegpt4video-8b --video images/yoga.mp4 --query Describe this video in detail.
+python run.py --model-path Lin-Chen/sharegpt4video-8b --video examples/yoga.mp4 --query Describe this video in detail.
+```
+
+Or you can build your local demo for enjoying our ShareGPT4Video-8B with the following command:
+
+```
+python app.py
 ```
 
 ## Install
