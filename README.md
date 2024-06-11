@@ -36,6 +36,22 @@ Here is a video for introducing ShareGPT4Video clearly:
 - [ ] Web demo and local demo of ShareGPT4V-8B
 - [x] Checkpoints of ShareGPT4Video-8B
 
+## Quick Usage
+
+## Install
+
+```bash
+git clone https://github.com/ShareGPT4Omni/ShareGPT4Video
+conda create -n share4video python=3.10 -y
+conda activate share4video
+
+cd ShareGPT4Video
+pip install --upgrade pip
+pip install -e .
+pip install -e ".[train]"
+pip install flash-attn --no-build-isolation
+```
+
 ## ❤️ Acknowledgments
 
 - [LLaVA](https://github.com/haotian-liu/LLaVA): the codebase we built upon. Thanks for their wonderful work.
