@@ -34,7 +34,7 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 - [ ] Training and evaluation code for ShareGPT4Video-8B
 - [ ] Local ShareCaptioner-Video
-- [ ] Web demo and local demo of ShareGPT4V-8B
+- [ ] Web demo and local demo of ShareGPT4Video-8B
 - [x] Checkpoints of ShareGPT4Video-8B
 
 ## ❤️ Acknowledgments
