@@ -26,6 +26,8 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 ## 📜 News
 
+**[2024/6/11]** The web demo and local demo of ShareCaptioner-Video are available now!
+
 **[2024/6/11]** The web demo and local demo of ShareGPT4Video-8B are available now!
 
 **[2024/6/7]** Our paper has been featured as [HuggingFace Daily Papers](https://huggingface.co/papers?date=2024-06-07) and ranked 1st in 6.7.
@@ -37,6 +39,7 @@ Here is a video for introducing ShareGPT4Video clearly:
 ## 👨‍💻 Todo
 
 - [ ] Training and evaluation code for ShareGPT4Video-8B
+- [ ] Batch inference code fro ShareCaptioner-Video
 - [x] Web demo and local demo of ShareCaptioner-Video
 - [x] Web demo and local demo of ShareGPT4Video-8B
 - [x] Checkpoints of ShareGPT4Video-8B
