@@ -69,6 +69,17 @@ pip install -e ".[train]"
 pip install flash-attn --no-build-isolation
 ```
 
+## ✒️ Citation
+If you find our work helpful for your research, please consider giving a star ⭐ and citation 📝
+```bibtex
+@article{chen2024sharegpt4video,
+  title={ShareGPT4Video: Improving Video Understanding and Generation with Better Captions},
+  author={Chen, Lin and Wei, Xilin and Li, Jinsong and Dong, Xiaoyi and Zhang, Pan and Zang, Yuhang and Chen, Zehui and Duan, Haodong and Lin, Bin and Tang, Zhenyu and others},
+  journal={arXiv preprint arXiv:2406.04325},
+  year={2024}
+}
+```
+
 ## ❤️ Acknowledgments
 
 - [LLaVA](https://github.com/haotian-liu/LLaVA): the codebase we built upon. Thanks for their wonderful work.
