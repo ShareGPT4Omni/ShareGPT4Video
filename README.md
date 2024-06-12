@@ -55,6 +55,14 @@ Or you can build your local demo for enjoying our ShareGPT4Video-8B with the fol
 python app.py
 ```
 
+You can build your local demo for enjoying our ShareCaptioner-Video with the following command:
+
+```
+cd captioner
+
+python app.py
+```
+
 ## Install
 
 ```bash
