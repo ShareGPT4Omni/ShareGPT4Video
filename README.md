@@ -96,3 +96,7 @@ If you find our work helpful for your research, please consider giving a star тн
 - [LLaVA](https://github.com/haotian-liu/LLaVA): the codebase we built upon. Thanks for their wonderful work.
 - [Open-Sora-Plan](https://github.com/PKU-YuanGroup/Open-Sora-Plan): an excellent open-source codebase for Sora-like text-to-video implementation. Thanks for their wonderful work.
 - [Open-LLaVA-NeXT](https://github.com/xiaoachen98/Open-LLaVA-NeXT): an open-source codebase for re-producing the training procedure of LLaVA-NeXT series.
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=ShareGPT4Omni/ShareGPT4Video&type=Date)](https://star-history.com/#ShareGPT4Omni/ShareGPT4Video&Date)
