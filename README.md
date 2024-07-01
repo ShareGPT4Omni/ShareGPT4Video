@@ -91,6 +91,20 @@ If you find our work helpful for your research, please consider giving a star �
   journal={arXiv preprint arXiv:2406.04325},
   year={2024}
 }
+
+@article{chen2023sharegpt4v,
+  title={ShareGPT4V: Improving Large Multi-Modal Models with Better Captions},
+  author={Chen, Lin and Li, Jisong and Dong, Xiaoyi and Zhang, Pan and He, Conghui and Wang, Jiaqi and Zhao, Feng and Lin, Dahua},
+  journal={arXiv preprint arXiv:2311.12793},
+  year={2023}
+}
+
+@article{chen2024we,
+  title={Are We on the Right Way for Evaluating Large Vision-Language Models?},
+  author={Chen, Lin and Li, Jinsong and Dong, Xiaoyi and Zhang, Pan and Zang, Yuhang and Chen, Zehui and Duan, Haodong and Wang, Jiaqi and Qiao, Yu and Lin, Dahua and others},
+  journal={arXiv preprint arXiv:2403.20330},
+  year={2024}
+}
 ```
 
 ## ❤️ Acknowledgments
