@@ -39,7 +39,7 @@ Here is a video for introducing ShareGPT4Video clearly:
 ## 👨‍💻 Todo
 
 - [ ] Training and evaluation code for ShareGPT4Video-8B
-- [ ] Batch inference code for ShareCaptioner-Video
+- [x] Batch inference code for ShareCaptioner-Video
 - [x] Web demo and local demo of ShareCaptioner-Video
 - [x] Web demo and local demo of ShareGPT4Video-8B
 - [x] Checkpoints of ShareGPT4Video-8B
