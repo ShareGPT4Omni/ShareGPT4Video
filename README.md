@@ -26,6 +26,8 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 ## 📜 News
 
+**[2024/7/1]** The code about batch-inference of ShareCaptioner-Video is available now!
+
 **[2024/6/11]** The web demo and local demo of ShareCaptioner-Video are available now!
 
 **[2024/6/11]** The web demo and local demo of ShareGPT4Video-8B are available now!
