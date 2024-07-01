@@ -4,11 +4,39 @@ import os
 
 from lmdeploy import pipeline, ChatTemplateConfig
 from lmdeploy.vl import load_image
+from lmdeploy.vl.model.utils import rewrite_ctx
+from contextlib import contextmanager
 from PIL import Image
 
 import torch
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms
+
+def _forward_4khd_7b(self, images):
+    """internlm-xcomposer2-4khd-7b vit forward."""
+    outputs = [x.convert('RGB') for x in images]
+    outputs = [self.HD_transform(x, hd_num=16) for x in outputs]
+    outputs = [
+        self.model.vis_processor(x).unsqueeze(0).to(dtype=torch.half)
+        for x in outputs
+    ]
+    embeds, split = self.model.vit(outputs, self.model.plora_glb_GN,
+                                    self.model.plora_sub_GN)
+    embeds = self.model.vision_proj(embeds)
+    embeds = torch.split(embeds, split, dim=1)
+    embeds = [x.squeeze() for x in embeds]
+    return embeds
+
+@contextmanager
+def custom_forward():
+    origin_func_path = [
+        'lmdeploy.vl.model.xcomposer2.Xcomposer2VisionModel._forward_4khd_7b',
+    ]
+    rewrite_func = [
+        _forward_4khd_7b
+    ]
+    with rewrite_ctx(origin_func_path, rewrite_func):
+        yield
 
 class ImageGridDataset(Dataset):
     def __init__(self, video_list, img_grid_w, img_grid_h, img_h, img_w):
@@ -63,7 +91,7 @@ if __name__ == '__main__':
     args = parse_args()
     model = pipeline(args.model_name, chat_template_config=ChatTemplateConfig(model_name='internlm-xcomposer2-4khd'))
     img_grid_w, img_grid_h = 5, 6  # Grid dimensions, defaultly 30 images per video
-    img_h, img_w = 800, 600  # Desired height and width
+    img_h, img_w = 600, 800  # Desired height and width
 
     # Create the dataset
     dataset = ImageGridDataset(args.img_path, img_grid_w, img_grid_h, img_h, img_w)
@@ -74,7 +102,8 @@ if __name__ == '__main__':
     # Using the DataLoader in a training loop or inference
     for batch_data, filenames in dataloader:
         # grid_image is now a batch of images ready for inference
-        final_responses = model(batch_data)
+        with custom_forward():
+            final_responses = model(batch_data)
         for filename, response in zip(filenames, final_responses):
             finish_data = {
                 "filename": filename,
