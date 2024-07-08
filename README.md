@@ -40,7 +40,7 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 ## 👨‍💻 Todo
 
-- [ ] Training code for ShareGPT4Video-8B
+- [x] Training code for ShareGPT4Video-8B
 - [x] Batch inference code for ShareCaptioner-Video
 - [x] Web demo and local demo of ShareCaptioner-Video
 - [x] Web demo and local demo of ShareGPT4Video-8B
@@ -82,9 +82,20 @@ pip install -e ".[train]"
 pip install flash-attn --no-build-isolation
 ```
 
+## Train
+
+To validate the effectiveness of high-quality video captions for helping to improve the LVLMs' comprehension capabilities. We choose the [VideoLLaVA](https://github.com/PKU-YuanGroup/Video-LLaVA?tab=readme-ov-file) and [LLaMA-VID](https://github.com/dvlab-research/LLaMA-VID) models as our baselines. The SFT data used for both models is LLaVA-mix665K image data plus VideoChatGPT-100K video data. We replace 28K caption data in VideoChatGPT-100K with 28K high quality caption data from ShareGPT4Video. Next, we take VideoLLaVA as the example.
+
+You need to follow the [instructions](https://github.com/PKU-YuanGroup/Video-LLaVA/blob/main/TRAIN_AND_VALIDATE.md) in VideoLLaVA to prepare the images and videos first, then download the 28K videos used in ShareGPT4Video from [HuggingFace](https://huggingface.co/datasets/ShareGPT4Video/ShareGPT4Video/tree/main/zip_folder) (only involves bdd100k, ego4d, and panda).
+
+Finally, you can specify the llava_v1_5_mix665k_with_video_chatgpt72k_share4video28k.json file in the [finetune.sh](https://github.com/PKU-YuanGroup/Video-LLaVA/blob/main/scripts/v1_5/finetune.sh) to perform the SFT to reproduce the results in the paper.
+
 ## ✒️ Citation
+
 If you find our work helpful for your research, please consider giving a star ⭐ and citation 📝
+
 ```bibtex
+
 @article{chen2024sharegpt4video,
   title={ShareGPT4Video: Improving Video Understanding and Generation with Better Captions},
   author={Chen, Lin and Wei, Xilin and Li, Jinsong and Dong, Xiaoyi and Zhang, Pan and Zang, Yuhang and Chen, Zehui and Duan, Haodong and Lin, Bin and Tang, Zhenyu and others},
