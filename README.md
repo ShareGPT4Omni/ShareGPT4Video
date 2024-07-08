@@ -40,7 +40,7 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 ## 👨‍💻 Todo
 
-- [ ] Training and evaluation code for ShareGPT4Video-8B
+- [ ] Training code for ShareGPT4Video-8B
 - [x] Batch inference code for ShareCaptioner-Video
 - [x] Web demo and local demo of ShareCaptioner-Video
 - [x] Web demo and local demo of ShareGPT4Video-8B
@@ -54,7 +54,7 @@ You can directly use our ShareGPT4Video model for conversation with your own vid
 python run.py --model-path Lin-Chen/sharegpt4video-8b --video examples/yoga.mp4 --query Describe this video in detail.
 ```
 
-Or you can build your local demo for enjoying our ShareGPT4Video-8B with the following command:
+Or you can build your local demo to enjoy our ShareGPT4Video-8B with the following command:
 
 ```
 python app.py
