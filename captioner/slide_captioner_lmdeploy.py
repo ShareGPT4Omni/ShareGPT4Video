@@ -9,13 +9,18 @@ from contextlib import contextmanager
 import torch
 
 def get_image_list(video_path):
-    frames = sorted(os.listdir(video_path))
-    img_path_list = []
-    for frame in frames:
-        img_path = os.path.join(video_path, frame)
-        # NOTE lazy load image
-        # img = load_image(img_path)
-        img_path_list.append(img_path)
+    frames = os.listdir(video_path)
+    
+    # A custom sorting function that sorts by the numeric part of the file name
+    def extract_number(frame_name):
+        start = frame_name.find('frame_') + len('frame_')
+        end = frame_name.find('.png')
+        number_str = frame_name[start:end]
+        return float(number_str)
+
+    sorted_frames = sorted(frames, key=extract_number)
+    
+    img_path_list = [os.path.join(video_path, frame) for frame in sorted_frames]
     return img_path_list
 
 def _forward_4khd_7b(self, images):
@@ -137,7 +142,7 @@ def parse_args():
 
 if __name__ == '__main__':
     args = parse_args()
-    model = pipeline(args.model_name, chat_template_config=ChatTemplateConfig(model_name='internlm-xcomposer2-4khd'))
+    model = pipeline(args.model_name, chat_template_config=ChatTemplateConfig(model_name='internlm-xcomposer2'))
     data_pool = VideoPool(pool_size=args.batch_size, video_path=args.videos_file)
     cnt = 0
     while True:
