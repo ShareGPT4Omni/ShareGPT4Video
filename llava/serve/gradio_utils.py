@@ -78,7 +78,7 @@ def resize_image_grid(image, max_length=1920):
         new_width = int(width * scale)
         new_height = int(height * scale)
 
-        img_resized = image.resize((new_width, new_height), Image.BILINEAR)
+        img_resized = image.resize((new_width, new_height), Image.LANCZOS)
     else:
         img_resized = image
     return img_resized
@@ -175,11 +175,14 @@ class Chat:
             vid, msg = None, 'num_frames is 0, not inputing image'
         img_grid = vid
         if self.pre_query_prompt is not None:
-            prompt = DEFAULT_IMAGE_TOKEN + '\n' + self.pre_query_prompt + prompt
+            prompt = DEFAULT_IMAGE_TOKEN + '
+' + self.pre_query_prompt + prompt
         else:
-            prompt = DEFAULT_IMAGE_TOKEN + '\n' + prompt
+            prompt = DEFAULT_IMAGE_TOKEN + '
+' + prompt
         state = self.get_prompt(prompt, state)
         prompt = state.get_prompt()
         llm_response = video_answer(prompt, model=self.model, processor=self.processor, tokenizer=self.tokenizer,
                                     do_sample=True, temperature=0.1, img_grid=img_grid, max_new_tokens=1024, print_res=True)
         return llm_response, state
+
