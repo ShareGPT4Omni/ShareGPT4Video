@@ -26,6 +26,8 @@ Here is a video for introducing ShareGPT4Video clearly:
 
 ## 📜 News
 
+**[2024/10/1]** Happy to announced that ShareGPT4Video was accepted by NeurIPS 2024 D&B track.
+
 **[2024/7/1]** The code about batch-inference of ShareCaptioner-Video is available now!
 
 **[2024/6/11]** The web demo and local demo of ShareCaptioner-Video are available now!
