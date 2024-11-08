@@ -51,9 +51,13 @@ class ImageGridDataset(Dataset):
 
     def __getitem__(self, idx):
         video_img_list = self.video_dir_list[idx]
-        img_path_list = os.listdir(video_img_list)
-        img_path_list.sort()
-        images = [Image.open(os.path.join(video_img_list, img_path)).convert('RGB') for img_path in img_path_list]
+        try:
+            img_path_list = os.listdir(video_img_list)
+            img_path_list.sort()
+            images = [Image.open(os.path.join(video_img_list, img_path)).convert('RGB') for img_path in img_path_list]
+        except Exception as e:
+            print(f"Error loading image: {e}")
+            return None
 
         img_width, img_height = images[0].size
         grid_image = Image.new('RGB', (self.img_grid_w * img_width, self.img_grid_h * img_height))
@@ -72,8 +76,9 @@ def custom_collate_fn(batch):
     input_list = []
     filename_list = []
     for item in batch:
-        input_list.append(item[0])
-        filename_list.append(item[1])
+        if item:
+            input_list.append(item[0])
+            filename_list.append(item[1])
     return input_list, filename_list
 
 def parse_args():
