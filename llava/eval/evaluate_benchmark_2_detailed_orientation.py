@@ -4,13 +4,7 @@ import json
 import os
 from multiprocessing.pool import Pool
 
-from openai import OpenAI
-
-client = OpenAI(
-    # This is the default and can be omitted
-    api_key=os.environ.get('OPENAIKEY'),
-    base_url=os.environ.get('OPENAIBASE')
-)
+from llm_provider import create_llm_client, add_provider_args, get_model_name, strip_think_tags
 
 
 def parse_args():
@@ -27,14 +21,15 @@ def parse_args():
     parser.add_argument("--num_chunks", default=1,
                         type=int, help="Result splits")
     parser.add_argument("--gpt_version", default="gpt-3.5-turbo-0125",
-                        type=str, help="version of gpt")
+                        type=str, help="Model name to use for evaluation.")
+    add_provider_args(parser)
     args = parser.parse_args()
     return args
 
 
-def annotate(prediction_set, caption_files, output_dir, gpt_version):
+def annotate(prediction_set, caption_files, output_dir, model, client):
     """
-    Evaluates question and answer pairs using GPT-3 and
+    Evaluates question and answer pairs using an LLM and
     returns a score for detailed orientation.
     """
     for file in caption_files:
@@ -47,7 +42,7 @@ def annotate(prediction_set, caption_files, output_dir, gpt_version):
             print(key, 'query')
             # Compute the detailed-orientation score
             completion = client.chat.completions.create(
-                model=gpt_version,
+                model=model,
                 messages=[
                     {
                         "role": "system",
@@ -76,7 +71,7 @@ def annotate(prediction_set, caption_files, output_dir, gpt_version):
                 ]
             )
             # Convert response to a Python dictionary.
-            response_message = completion.choices[0].message.content
+            response_message = strip_think_tags(completion.choices[0].message.content)
             response_dict = ast.literal_eval(response_message)
             result_qa_pair = [response_dict, qa_set]
 
@@ -96,6 +91,9 @@ def main():
     """
     # Parse arguments.
     args = parse_args()
+
+    client = create_llm_client(args.provider)
+    model = get_model_name(args)
 
     pred_contents = []
     for _idx in range(args.num_chunks):
@@ -162,7 +160,7 @@ def main():
             part_len = len(incomplete_files) // num_tasks
             all_parts = [incomplete_files[i:i + part_len]
                          for i in range(0, len(incomplete_files), part_len)]
-            task_args = [(prediction_set, part, args.output_dir, args.gpt_version)
+            task_args = [(prediction_set, part, args.output_dir, model, client)
                          for part in all_parts]
             print('Generate', len(all_parts), 'subprocess.')
 
