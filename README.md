@@ -92,6 +92,44 @@ You need to follow the [instructions](https://github.com/PKU-YuanGroup/Video-LLa
 
 Finally, you can specify the llava_v1_5_mix665k_with_video_chatgpt72k_share4video28k.json file in the [finetune.sh](https://github.com/PKU-YuanGroup/Video-LLaVA/blob/main/scripts/v1_5/finetune.sh) to perform the SFT to reproduce the results in the paper.
 
+## Evaluation with Alternative LLM Providers
+
+The evaluation benchmarks support multiple LLM providers via the `--provider` flag. By default, OpenAI is used, but you can switch to [MiniMax](https://www.minimax.io/) or other OpenAI-compatible providers.
+
+### Using MiniMax
+
+```bash
+# Set your MiniMax API key
+export MINIMAX_API_KEY="your-minimax-api-key"
+
+# Run evaluation with MiniMax (auto-detects provider from MINIMAX_API_KEY)
+python llava/eval/evaluate_benchmark_1_correctness.py \
+    --pred_path <path> --output_dir <dir> --output_json <json> --num_tasks 4
+
+# Or explicitly specify the provider
+python llava/eval/evaluate_benchmark_1_correctness.py \
+    --pred_path <path> --output_dir <dir> --output_json <json> --num_tasks 4 \
+    --provider minimax
+
+# Use a specific MiniMax model
+python llava/eval/evaluate_benchmark_1_correctness.py \
+    --pred_path <path> --output_dir <dir> --output_json <json> --num_tasks 4 \
+    --provider minimax --gpt_version MiniMax-M2.7
+```
+
+Available MiniMax models: `MiniMax-M2.7` (default, 1M context), `MiniMax-M2.7-highspeed`.
+
+### Using OpenAI (default)
+
+```bash
+export OPENAIKEY="your-openai-api-key"
+# Optionally set a custom base URL:
+# export OPENAIBASE="https://your-proxy.com/v1"
+
+python llava/eval/evaluate_benchmark_1_correctness.py \
+    --pred_path <path> --output_dir <dir> --output_json <json> --num_tasks 4
+```
+
 ## ✒️ Citation
 
 If you find our work helpful for your research, please consider giving a star ⭐ and citation 📝
